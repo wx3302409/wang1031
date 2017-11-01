@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src = "./vue.js"></script>
+	</head>
+	<body>
+		<div  id = "example">
+			
+				  <input v-model="parentMsg">
+				  <br>
+				  <child  v-bind="parentMsg"></child>
+		
+		</div>
+	</body>
+	<script>
+	
+		/*Vue.component("item",{
+			props:['conent'],
+			template:"<li>{{conent}}</li>"
+		})*/
+
+
+		/*var app = new Vue({
+			el:"#root",
+			data:{
+				numbers: [ 1, 2, 3, 4, 5 ],
+				value:""
+			},
+
+			methods:{
+
+				warn: function (e) {
+   					alert(e.target.value);
+  				},
+  				click:function(){
+  					alert(11111111111);
+  				}
+			},
+
+			created:function(){
+
+				Vue.config.keyCodes.e = 39
+			}
+
+		})*/
+	
+		var todo = {
+			text:'haha',
+			comp:"heihei"	
+		}
+		
+		Vue.component('child', {
+		  // 声明 props
+		  props: ['myMessage'],
+		  // 就像 data 一样，prop 也可以在模板中使用
+		  // 同样也可以在 vm 实例中通过 this.message 来使用
+		  template: '<span>{{myMessage.text}}  {{myMessage.comp}}</span>'
+		})
+		
+
+		new Vue({
+			el: '#example',
+			data:{
+				parentMsg:todo
+			}
+			
+		})
+	
+	</script>
+</html>
